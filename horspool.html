@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>horspool</title>
+</head>
+<body>
+	<script>
+		var match = function(string, pattern) {
+
+			var alphabetTabel = {},
+				pattern_len = pattern.length,
+				pattern_arr = pattern.split('')
+
+			pattern_arr.forEach(function(item,index){
+
+				alphabetTabel[item] = pattern_len-index-1;
+
+			})
+			
+			var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+			alphabet.forEach(function(item){
+				if(!alphabetTabel[item]){
+					alphabetTabel[item] = pattern_len
+				}
+			})
+
+			var string_arr = string.split(''),
+				string_len = string.length,
+				i = pattern_len-1;
+
+			while(i<=string_len-1) {
+
+				var k = 0
+
+				while(k<=pattern_len-1&&pattern_arr[pattern_len-1-k]==string_arr[i-k]) {
+					k++
+				}
+
+				if(k == pattern_len) return i-pattern_len+1
+
+				else i=i+alphabetTabel[string_arr[i]]
+			}
+
+			return -1
+		}
+	</script>
+</body>
+</html>
