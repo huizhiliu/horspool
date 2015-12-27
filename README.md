@@ -4,5 +4,5 @@
 ```
  match('who is liuhzz','liuhzz')
  
- Returns the position of a number
+ Returns the position of a pattern
 ```
